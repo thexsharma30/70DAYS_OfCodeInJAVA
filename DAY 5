@@ -1,0 +1,27 @@
+import java.util.Scanner;
+public class BinarytoDecimal 
+{
+    public static void main(String args[])
+    {
+        String s;
+        int d,r=0,sum=0,i=0,m;
+        double p;
+        Scanner sc =new Scanner(System.in);
+        System.out.println("Enter Binary No.");
+        s= sc.nextLine();
+        d=Integer.parseInt(s);
+       while(d!=0)
+        {
+           r=d%10;
+          p=Math.pow(2, i);
+          m=(int)p;
+          m=m*r;
+          sum=sum+m;
+           i++;
+           d=d/10;
+        }
+        System.out.println("Deimal value is: "+sum); 
+        sc.close();  
+    }
+    
+}
