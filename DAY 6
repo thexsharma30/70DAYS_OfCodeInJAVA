@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//Converting Decimal no to Hexadecimal no
 public class DecimaltoHexadecimal
 {
    public static void main(String args[])
