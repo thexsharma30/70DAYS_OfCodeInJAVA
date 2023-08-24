@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class os 
+{
+    public static void main(String[] args)
+    {
+        int n,i;
+        double avw=0,avt=0;
+        System.out.println("Enter the no. of process");
+        try (Scanner sc = new Scanner(System.in))
+         {
+            n=sc.nextInt();
+            int bu[]= new int[n];
+            int arr[]=new int[n];
+            int wait[]=new int[n];
+            int tart[]=new int[n];
+            int com[]=new int[n];
+            System.out.println("Enter Burst Time:");
+            for(i=0;i<n;i++)
+            bu[i]=sc.nextInt();
+            System.out.println("Enter Arrival Time:");
+            for(i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+            for(i=0;i<n;i++)
+            {
+                if(i==0)
+                com[i]=arr[i]+bu[i];
+                else
+                com[i]=com[i-1]+bu[i];
+                tart[i]=com[i]-arr[i];
+                wait[i]=tart[i]-bu[i];
+            }
+            System.out.println("Process:: \t"+"Waiting Time::\t"+"Turn Around Time");
+            for(i=0;i<n;i++)
+            {
+                System.out.print("P"+i);
+                System.out.print("\t\t"+wait[i]);
+                System.out.println("\t\t"+tart[i]);
+                avw=avw+wait[i];
+                avt=avt+tart[i];
+            }
+            System.out.println("Average Waiting Time: "+avw/n);
+            System.out.println("Average Turn-around Time: "+avt/n);
+            sc.close();
+        }
+
+    }
+}
