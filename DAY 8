@@ -1,0 +1,74 @@
+//import java.util.Scanner;
+public class bank
+ {
+    String accno,accholder;
+    double bal;
+    public bank(String accno, String accholder, double initialbal)
+    {
+        this.accno=accno;
+        this.accholder=accholder;
+        this.bal=initialbal;
+    }
+    public void deposit(double amt) 
+    {
+        if (amt > 0)
+         {
+            bal += amt;
+            System.out.println(amt + " deposited successfully. New balance: " + bal);
+        } 
+        else
+            System.out.println("Invalid amount for deposit.");
+    }
+    public void withdraw(double amt) 
+    {
+        if (amt > 0 && amt <= bal)
+        {
+            bal -= amt;
+            System.out.println(amt + " withdrawn successfully. New balance: " + bal);
+        } 
+        else
+        {
+        System.out.println("Insufficient funds or invalid amount for withdrawal.");
+        }
+    }
+    public double getBalance()
+    {
+        return bal;
+    }
+        
+    public String getAccountNumber() 
+    {
+        return accno;
+    }
+        
+    public String getAccountHolder()
+    {
+        return accholder;
+    }
+    public static void main(String[] args)
+    {
+        /*String number,holder;
+        double b,d,w;
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter Bank Account Number:");
+        number=sc.next();
+        System.out.println("Enter Account Holder Name:");
+        holder=sc.next();
+        System.out.println("Enter Initial balance:");
+        b=sc.nextDouble();
+        System.out.println("Enter Amount You Want To Deposit:");
+        d=sc.nextDouble();
+        System.out.println("Enter Amount You Want To Withdraw:");
+        w=sc.nextDouble();*/
+        bank account = new bank("123456789", "Amar Sharma", 50000.0);
+        //bank account = new bank(number,holder,b);
+        System.out.println("Account Number: " + account.getAccountNumber());
+        System.out.println("Account Holder: " + account.getAccountHolder());
+        System.out.println("Initial Balance: " + account.getBalance());        
+        account.deposit(5000.0);
+        //account.deposit(d);
+        account.withdraw(4000.0); 
+        //account.withdraw(w);       
+        System.out.println("Current Balance: " + account.getBalance());
+    }
+}
