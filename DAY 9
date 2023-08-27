@@ -1,0 +1,27 @@
+import java.util.*;
+import java.text.*;
+public class Currency
+{  
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter any Value You want to Convert and check value in Different Currency");
+        double payment = scanner.nextDouble();
+        scanner.close();
+        // Convert to US Dollar
+        NumberFormat usFormat = NumberFormat.getCurrencyInstance(Locale.US);
+        String us = usFormat.format(payment);
+        System.out.println("US: " + us);
+        // Convert to Indian Rupee
+        NumberFormat indiaFormat = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
+        String india = indiaFormat.format(payment);
+        System.out.println("India: " + india);
+        // Convert to Chinese Yuan
+        NumberFormat chinaFormat = NumberFormat.getCurrencyInstance(Locale.CHINA);
+        String china = chinaFormat.format(payment);
+        System.out.println("China: " + china);
+        // Convert to Euro
+        NumberFormat franceFormat = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+        String french = franceFormat.format(payment);
+        System.out.println("France: " + french);
+    }
+}
