@@ -1,0 +1,23 @@
+//WAP to input any no. and check whether it is pallindrome or not.
+import java.util.Scanner;
+public class palin {
+    public static void main(String args[])
+    {
+        int n,ne,rev=0,a;
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Enter a no.");
+        n=sc.nextInt();
+        ne=n;
+        sc.close();
+        while(ne!=0)
+        {
+            a=ne%10;
+            rev=(rev*10)+a;
+            ne=ne/10;
+        }
+        if(rev==n)
+        System.out.println("Pallindrome");
+        else
+        System.out.println("Not Pallindrome");
+    }  
+}
