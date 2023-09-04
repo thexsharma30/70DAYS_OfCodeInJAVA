@@ -1,0 +1,94 @@
+//Demonstrate single level, multilevel, and hierarchical inheritance by taking suitable and logical classes.
+//Demonstrate public, private and protected access specifiers by taking suitable and logical class members.
+class Vehicle 
+{
+    public String company;
+    protected int year;
+    public double price;
+    public void setCompany(String company) {
+        this.company = company;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public void setModel(String model) {
+    }
+    public void start() {
+        System.out.println("Starting the vehicle.");
+    }
+    protected void accelerate() {
+        System.out.println("Accelerating the vehicle.");
+    }
+    void stop() {
+        System.out.println("Stopping the vehicle.");
+    }
+}
+
+class Car extends Vehicle {
+    public void drive() {
+        System.out.println("Driving the car.");
+    }
+    public void accessFieldsAndMethods() {
+        System.out.println(company); // Accessible (public)
+        System.out.println(year);    // Accessible (protected)
+        System.out.println(price);   // Accessible (package-private)
+        
+        start();
+        accelerate();
+        stop();
+    }
+}
+
+class Truck extends Vehicle {
+    public void haulCargo() {
+        System.out.println("Hauling cargo with the truck.");
+    }
+}
+
+class Suv extends Car {
+    public void offRoad() {
+        System.out.println("Driving the SUV off-road.");
+    }
+}
+
+class Sedan extends Car {
+    public void cruise() {
+        System.out.println("Driving the sedan in cruise mode.");
+    }
+}
+
+public class Inheritance {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.setCompany("Toyota");
+        car.setYear(2022);
+        car.setPrice(500000.0);
+        car.setModel("Legender");
+        car.accessFieldsAndMethods();
+        car.drive();
+        Truck truck = new Truck();
+        truck.setCompany("AshokLeyland");
+        truck.setYear(2021);
+        truck.setPrice(750000.0);
+       // truck.accessFieldsAndMethods();
+        truck.haulCargo();
+        Suv suv = new Suv();
+        suv.setCompany("Jeep");
+        suv.setYear(2023);
+        suv.setPrice(60000.0);
+        suv.accessFieldsAndMethods();
+        suv.drive();
+        suv.offRoad();
+        Sedan sedan = new Sedan();
+        sedan.setCompany("Volkswagen");
+        sedan.setYear(2022);
+        sedan.setPrice(450000.0);
+        sedan.setModel("Virtus");
+        sedan.accessFieldsAndMethods();
+        sedan.drive();
+        sedan.cruise();
+    }
+}
