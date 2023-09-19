@@ -1,0 +1,24 @@
+/*In this problem, you have to add and multiply huge numbers! These numbers are so big that you can't contain them in any ordinary data types like a long integer.
+Use the power of Java's BigInteger class and solve this problem.*/
+
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        BigInteger n = new BigInteger(sc.next());
+        BigInteger m = new BigInteger(sc.next());
+        sc.close(); // Close the scanner when you're done with it
+
+        // Calculate the sum and product
+        BigInteger sum = n.add(m);
+        BigInteger product = n.multiply(m);
+
+        // Print the results
+        System.out.println(sum);
+        System.out.println(product);
+    }
+}
