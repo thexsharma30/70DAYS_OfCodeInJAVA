@@ -1,0 +1,56 @@
+//Leetcode Question 4. Median of two Sorted Arrays.
+
+import java.util.*;
+
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m = nums1.length; // Get the length of nums1
+        int n = nums2.length; // Get the length of nums2
+        int l = m + n;
+        int[] num3 = new int[l];
+        int i, a = 0;
+        double med = 0.0;
+        
+        // Copy elements from nums1 and nums2 to num3
+        for (i = 0; i < m; i++) {
+            num3[i] = nums1[i];
+        }
+        for (i = m; i < l; i++) {
+            num3[i] = nums2[a];
+            a++;
+        }
+        
+        Arrays.sort(num3);
+        int middle = l / 2;
+        
+        if (l % 2 == 0) {
+            // If the array length is even, take the average of the two middle elements
+            med = (num3[middle - 1] + num3[middle]) / 2.0;
+        } else {
+            // If the array length is odd, take the middle element
+            med = num3[middle];
+        }
+        
+        return med; // Return the median value
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        Scanner sc = new Scanner(System.in);
+
+        int m = sc.nextInt(); // Read the length of the first array
+        int n = sc.nextInt(); // Read the length of the second array
+
+        int[] arr = new int[m];
+        int[] arr1 = new int[n];
+
+        for (int i = 0; i < m; i++)
+            arr[i] = sc.nextInt(); // Read elements for the first array
+
+        for (int i = 0; i < n; i++)
+            arr1[i] = sc.nextInt(); // Read elements for the second array
+
+        double result = s.findMedianSortedArrays(arr, arr1);
+        System.out.println(result); // Print the median
+    }
+}
