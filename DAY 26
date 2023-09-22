@@ -1,0 +1,29 @@
+//LeetCode Question-9 Palindrome Number
+import java.util.Scanner;
+public class Solution {
+    public boolean isPalindrome(int x) {
+        // Base condition
+        if (x < 0) {
+            return false;
+        }
+        // Store the number in a variable
+        int number = x;
+        // This will store the reverse of the number
+        int reverse = 0;
+        while (number > 0) {
+            reverse = reverse * 10 + number % 10;
+            number /= 10;
+        }
+        return x == reverse;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        Solution solution = new Solution();
+        boolean isPalindromic = solution.isPalindrome(num);
+        System.out.println("Is it a palindrome? " + isPalindromic);
+    }
+}
