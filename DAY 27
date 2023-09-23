@@ -1,0 +1,45 @@
+//Leetcode Question-29 Divide Two Integers
+class Solution {
+    public int divide(int dividend, int divisor) {
+        // Handle edge cases
+        if (dividend == Integer.MIN_VALUE && divisor == -1) {
+            return Integer.MAX_VALUE; // Overflow case
+        }
+
+        // Convert both dividend and divisor to long to handle edge cases
+        long ldividend = Math.abs((long) dividend);
+        long ldivisor = Math.abs((long) divisor);
+
+        int result = 0;
+
+        while (ldividend >= ldivisor) {
+            long temp = ldivisor;
+            long multiple = 1;
+
+            while (ldividend >= (temp << 1)) {
+                temp <<= 1;
+                multiple <<= 1;
+            }
+
+            ldividend -= temp;
+            result += multiple;
+        }
+
+        // Determine the sign of the result
+        if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {
+            result = -result;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int result, n1, n2;
+        Solution s = new Solution();
+        Scanner sc = new Scanner(System.in);
+        n1 = sc.nextInt();
+        n2 = sc.nextInt();
+        result = s.divide(n1, n2);
+        System.out.println(result);
+    }
+}
