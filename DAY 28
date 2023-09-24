@@ -1,0 +1,47 @@
+//Leetcode Question-8 String to Integer(atoi)
+
+class Solution {
+    public int myAtoi(String str) {
+        if (str == null || str.isEmpty()) {
+            return 0;
+        }
+
+        // Constants for integer bounds
+        final int INT_MAX = 2147483647;
+        final int INT_MIN = -2147483648;
+
+        // Remove leading and trailing whitespaces
+        str = str.trim();
+
+        if (str.isEmpty()) {
+            return 0; // After trimming, if the string is empty, return 0
+        }
+
+        int sign = 1; // Initialize sign as positive
+        int i = 0;
+        char firstChar = str.charAt(0);
+
+        if (firstChar == '+' || firstChar == '-') {
+            if (firstChar == '-') {
+                sign = -1;
+            }
+            i++; // Move to the next character
+        }
+
+        long result = 0; // Use long to avoid integer overflow
+
+        while (i < str.length() && Character.isDigit(str.charAt(i))) {
+            int digit = str.charAt(i) - '0';
+
+            // Check for integer overflow
+            if (result > (INT_MAX - digit) / 10) {
+                return sign == 1 ? INT_MAX : INT_MIN;
+            }
+
+            result = result * 10 + digit;
+            i++;
+        }
+
+        return (int) (result * sign);
+    }
+}
