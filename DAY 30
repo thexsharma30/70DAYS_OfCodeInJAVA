@@ -1,0 +1,34 @@
+//Selectionsort 
+
+import java.util.Scanner;
+public class SelectionSort {
+    public static void main(String args[])
+    {
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter the length of Array");
+        int n,i,j,smallest,temp;
+        n=sc.nextInt();
+        int arr[]= new int[n];
+        for(i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        sc.close();
+        for(i=0;i<n-1;i++){
+            smallest=i;
+            for(j=i+1;j<n;j++){
+                if(arr[smallest]>arr[j]){
+                    smallest=j;
+                }
+                
+            }
+            temp=arr[smallest];
+            arr[smallest]=arr[i];
+            arr[i]=temp;
+        }
+        for(i=0;i<n;i++)
+        {
+           System.out.print(arr[i]);
+        }
+    }    
+}            
