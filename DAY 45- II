@@ -1,0 +1,10 @@
+//Leetcode Question 69 - Sqrt(x)
+
+import java.lang.*;
+class Solution {
+    public int mySqrt(int x) {
+        double sqr=Math.sqrt(x);
+        int sq=(int)sqr;
+        return sq;
+    }
+}
