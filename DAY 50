@@ -1,0 +1,17 @@
+//LeetCode Question - 231 (Power Of Two)
+
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        if (n <= 0) {
+            return false; // Negative numbers and zero are not powers of two
+        }
+
+        // Keep dividing n by 2 until it's no longer divisible by 2
+        while (n % 2 == 0) {
+            n /= 2;
+        }
+
+        // If n is 1, it's a power of two; otherwise, it's not
+        return n == 1;
+    }
+}
