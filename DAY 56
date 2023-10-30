@@ -1,0 +1,28 @@
+//Leetcode Question 179 (Largest Number)
+
+class Solution {
+    public String largestNumber(int[] nums) {
+        int len = nums.length; // Fixed the syntax error in this line
+        String[] numStrings = new String[len]; // Convert integers to strings
+        for (int i = 0; i < len; i++) {
+            numStrings[i] = String.valueOf(nums[i]);
+        }
+        
+        // Custom comparator for sorting the strings
+        Arrays.sort(numStrings, (a, b) -> (b + a).compareTo(a + b));
+
+        // Concatenate the sorted strings to form the largest number
+        StringBuilder result = new StringBuilder();
+        for (String numStr : numStrings) {
+            result.append(numStr);
+        }
+
+        // Check for leading zeros in the result
+        int i = 0;
+        while (i < result.length() - 1 && result.charAt(i) == '0') {
+            i++;
+        }
+
+        return result.substring(i); // Return the result as a string
+    }
+}
