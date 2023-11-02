@@ -1,0 +1,40 @@
+//Leetcode Question 57 valid Number
+
+public class Solution {
+    public boolean isNumber(String s) {
+        s = s.trim();
+        
+        boolean isDecimalPointSeen = false;
+        boolean isExponentSeen = false;
+        boolean isDigitSeen = false;
+        boolean isDigitAfterExponent = true;
+        
+        for (int i = 0; i < s.length(); i++) {
+            char currentChar = s.charAt(i);
+            
+            if ('0' <= currentChar && currentChar <= '9') {
+                isDigitSeen = true;
+                isDigitAfterExponent = true;
+            } else if (currentChar == '.') {
+                if (isExponentSeen || isDecimalPointSeen) {
+                    return false;
+                }
+                isDecimalPointSeen = true;
+            } else if (currentChar == 'e' || currentChar == 'E') {
+                if (isExponentSeen || !isDigitSeen) {
+                    return false;
+                }
+                isDigitAfterExponent = false;
+                isExponentSeen = true;
+            } else if (currentChar == '-' || currentChar == '+') {
+                if (i != 0 && s.charAt(i - 1) != 'e' && s.charAt(i - 1) != 'E') {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        
+        return isDigitSeen && isDigitAfterExponent;
+    }
+}
