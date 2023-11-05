@@ -1,0 +1,9 @@
+//Leetcode Question No. 371 (Sum Of two Integer)
+
+class Solution {
+    public int getSum(int a, int b) {
+        int c= a+b;
+        return c;
+        
+    }
+}
