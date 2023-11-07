@@ -1,0 +1,35 @@
+//Leetcode Question No.264 (Ugly Number II)
+
+class Solution {
+    public int nthUglyNumber(int n) {
+        if (n <= 0) {
+            return 0; // There is no 0th ugly number
+        }
+
+        int[] ugly = new int[n];
+        ugly[0] = 1;
+
+        int i2 = 0, i3 = 0, i5 = 0; // Pointers for 2, 3, and 5 multiples
+        int nextMultipleOf2 = 2, nextMultipleOf3 = 3, nextMultipleOf5 = 5;
+
+        for (int i = 1; i < n; i++) {
+            int nextUgly = Math.min(nextMultipleOf2, Math.min(nextMultipleOf3, nextMultipleOf5));
+            ugly[i] = nextUgly;
+
+            if (nextUgly == nextMultipleOf2) {
+                i2++;
+                nextMultipleOf2 = ugly[i2] * 2;
+            }
+            if (nextUgly == nextMultipleOf3) {
+                i3++;
+                nextMultipleOf3 = ugly[i3] * 3;
+            }
+            if (nextUgly == nextMultipleOf5) {
+                i5++;
+                nextMultipleOf5 = ugly[i5] * 5;
+            }
+        }
+
+        return ugly[n - 1];
+    }
+}
