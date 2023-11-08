@@ -1,0 +1,22 @@
+//GeeksForGeeks Question : Find Duplicates in an Array
+
+class Solution {
+   public static ArrayList<Integer> duplicates(int arr[], int n) {
+        // code here
+        ArrayList<Integer>l=new ArrayList<>();
+        int i;
+        Arrays.sort(arr);
+        //Create an index array that keeps track of the indexes that occur and repeat
+        int ind[]=new int[n];
+        Arrays.fill(ind,-1);
+        for(i=0;i<n;i++){
+            ind[arr[i]]++;
+            //If it appears atleast once add it
+            if(ind[arr[i]]==1)
+                l.add(arr[i]);
+        }
+        if(l.size()==0)
+            l.add(-1);
+        return l;
+    }
+}
